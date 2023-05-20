@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:scrollbars="vertical"
+    >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_700">
+
+    <TextView
+        android:id="@+id/saldo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="18dp"
+        android:background="#2196F3"
+        android:paddingVertical="50dp"
+        android:text="Qui apparirà il saldo iniziale del tuo conto"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <!-->linear1 crea conto<!-->
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/saldo"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageButton
+            android:id="@+id/crea"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/hide_bottom_view_on_scroll_behavior"
+            android:onClick="createBank"
+            android:background="@color/teal_700"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/new_verde"/>
+
+
+        <EditText
+            android:id="@+id/getSaldo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:inputType="numberDecimal"
+            android:background="@color/white"
+            android:hint="inserisci saldo iniziale"
+            android:textAlignment="center"
+        />
+
+    </LinearLayout>
+
+    <!-->linear2 deposita<!-->
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear1"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageButton
+            android:id="@+id/deposit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/hide_bottom_view_on_scroll_behavior"
+            android:background="@color/teal_700"
+            android:src="@drawable/deposit"
+            android:layout_marginRight="15dp"
+            android:onClick="deposit"/>
+
+
+        <EditText
+            android:id="@+id/depositAmount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:hint="importo da depositare"
+            android:inputType="numberDecimal"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <!-->linear3 preleva<!-->
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageButton
+            android:id="@+id/withdrow"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="@string/hide_bottom_view_on_scroll_behavior"
+            android:background="@color/teal_700"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/preleva"
+            android:onClick="preleva"
+            />
+
+
+    <EditText
+        android:id="@+id/prelevaAmount"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:background="@color/white"
+        android:hint="importo da prelevare"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"/>
+    </LinearLayout>
+
+    <!-->linear4 interessi<!-->
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_below="@id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp">
+
+    <ImageButton
+        android:id="@+id/interess"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:contentDescription="@string/hide_bottom_view_on_scroll_behavior"
+        android:onClick="addI"
+        android:src="@drawable/interessi"
+        android:backgroundTint="@color/teal_700"
+        android:layout_marginRight="15dp"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:id="@+id/getInteress"
+        android:inputType="numberDecimal"
+        android:hint="INTERESSI; Default 0.004"
+        android:textAlignment="center"
+        android:background="@color/white"
+        />
+    </LinearLayout>
+
+    <!-->linear barra utility<!-->
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_below="@id/linear4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/teal_700">
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="CLEAN LISTA"
+        android:width="1dp"
+        android:id="@+id/clean"
+        android:backgroundTint="#009688"
+        android:onClick="pulisciLista"
+        android:layout_marginRight="10dp"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="CLEAN LOG"
+        android:width="1dp"
+        android:id="@+id/cleanLog"
+        android:backgroundTint="#009688"
+        android:onClick="pulisciLog"
+        android:layout_marginRight="10dp"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:id="@+id/allIn"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="PRELEVA TUTTO"
+        android:backgroundTint="#E91E63"
+        android:onClick="all"
+        android:layout_marginRight="10dp"/>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/info"
+        android:text="APP INFO"
+        android:layout_below="@id/prelevaAmount"
+        android:textAlignment="center"
+        android:onClick="info"
+        />
+    </LinearLayout>
+
+    <!-->linear 11 salva carica log<!-->
+    <LinearLayout
+        android:id="@+id/linaer11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear"
+        android:layout_marginBottom="10dp"
+        android:background="@color/teal_700"
+    >
+        <ImageButton
+            android:id="@+id/salva"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/hide_bottom_view_on_scroll_behavior"
+            android:onClick="salvataggio"
+            android:src="@drawable/save"
+            android:background="@color/teal_700"/>
+
+        <ImageButton
+            android:id="@+id/carica"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/hide_bottom_view_on_scroll_behavior"
+            android:onClick="caricamento"
+            android:src="@drawable/load"
+            android:background="@color/teal_700"/>
+
+        <ImageButton
+            android:id="@+id/logButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="log"
+            android:contentDescription="@string/hide_bottom_view_on_scroll_behavior"
+            android:src="@drawable/log"
+            android:background="@color/teal_700"/>
+
+    </LinearLayout>
+
+    <!-->linear 12 etichette pulsanti<!-->
+    <LinearLayout
+        android:id="@+id/linear12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linaer11"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SALVA"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CARICA"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="STORICO"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/CronologiaOpBarra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear12"
+        android:layout_marginTop="11dp"
+        android:background="#FFEB3B"
+        android:text="LISTA MOVIMENTI"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <ScrollView
+        android:id="@+id/scroller_id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:layout_below="@id/CronologiaOpBarra"
+        android:layout_centerHorizontal="true"
+        >
+    <TextView
+        android:id="@+id/CronologiaOp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/barraStorico"
+        android:layout_below="@id/scroller_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFEB3B"
+        android:text="STORICO"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"/>
+
+    <ScrollView
+        android:id="@+id/logScroll"
+        android:layout_below="@id/barraStorico"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/cronLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"/>
+
+    </ScrollView>
+
+</RelativeLayout>
+</ScrollView>
